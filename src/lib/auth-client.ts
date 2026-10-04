@@ -4,4 +4,4 @@ export const authClient = createAuthClient({
     baseURL: process.env.LOCAL_BASE_URL
 })
 
-export const { signIn, signOut, signUp, useSession } = authClient
+export const { signIn, signOut, signUp, requestPasswordReset, resetPassword, useSession } = authClient

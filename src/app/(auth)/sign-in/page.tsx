@@ -1,6 +1,7 @@
 "use client"
 import { signIn } from "@/lib/auth-client";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import Link from "next/link";
 
 const SignInPage = () => {
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -72,8 +73,12 @@ const SignInPage = () => {
                     </Button>
                 </div>
             </Form>
-            <div className="mt-2">
+            <div className="">
                 <Button onClick={handleGoogle}>Or Sign in with Google</Button>
+            </div>
+            <div className="flex text-sm gap-1 mt-5 py-3">
+                <h2>Forgot Password ?</h2>
+                <Link className="underline text-blue-400 font-semibold" href="/forgot-password">Click here</Link>
             </div>
         </div>
     );

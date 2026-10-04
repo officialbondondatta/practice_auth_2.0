@@ -16,16 +16,27 @@ const db = client.db("fakeUser_01");
 export const auth = betterAuth({
     emailAndPassword: {
         enabled: true,
-        requireEmailVerification: true
+        requireEmailVerification: true,
+        sendResetPassword: async ({ user, url, token }, request) => {
+            void resend.emails.send({
+                from: 'Acme <onboarding@resend.dev>',
+                to: user.email,
+                subject: "Reset Your Password",
+                html: `
+                <h2>If you haven't requested password reset then please ignore this email </h2>
+                Click the link to reset your password: ${url}
+                `
+            })
+        }
     },
     emailVerification: {
         sendVerificationEmail: async ({ user, url }) => {
             void resend.emails.send({
                 from: 'Acme <onboarding@resend.dev>',
-                to: 'dattabondon1320@gmail.com',
+                to: user.email,
                 subject: 'Hello World',
                 text: `
-                <p>Congrats on sending your <strong>first email</strong>!</p>
+                <h1>Congrats on sending your <strong>first email</strong>!</h1>
                 <p>Click the link to verify your email: ${url}</p> 
                 `
             });
