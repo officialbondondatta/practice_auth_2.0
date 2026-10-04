@@ -13,7 +13,7 @@ const SignUpPage = () => {
             password: inputData.password,
             callbackURL: "/sign-in"
         })
-        console.log(data)
+        console.log("After signup", data)
     };
     return (
         <div className="flex items-center justify-center flex-col gap-5 mt-10 bg-lime-200 container mx-auto">
