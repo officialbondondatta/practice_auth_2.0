@@ -14,7 +14,13 @@ const SignInPage = () => {
         })
         console.log(data)
 
-    };
+    }
+    const handleGoogle = async () => {
+        const { data, error } = await signIn.social({
+            provider: "google"
+        })
+        console.log(data, error)
+    }
     return (
         <div className="bg-sky-200 container mx-auto flex flex-col items-center justify-center mt-10">
             <h2 className="text-2xl mt-5">Sign In</h2>
@@ -66,6 +72,9 @@ const SignInPage = () => {
                     </Button>
                 </div>
             </Form>
+            <div className="mt-2">
+                <Button onClick={handleGoogle}>Or Sign in with Google</Button>
+            </div>
         </div>
     );
 };
